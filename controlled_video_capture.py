@@ -67,9 +67,6 @@ if __name__ == '__main__':
                     print("Bad Frame")
                     break
 
-        # Write Frame to Video
-        f.write(frame)
-
         # Display Video on Pi
         cv2.imshow('Video', frame)
         if cv2.waitKey(1) & 0xFF == ord('s'):
