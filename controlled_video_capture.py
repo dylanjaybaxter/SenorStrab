@@ -57,8 +57,6 @@ if __name__ == '__main__':
                             or gp.input(TRIGGER_PIN):
                         while gp.input(TRIGGER_PIN):
                             pass
-                        vid.release()
-                        f.release()
                         gp.output(LED_PIN, gp.LOW)
                         cv2.destroyAllWindows()
                         print("Video Saved")
@@ -66,15 +64,19 @@ if __name__ == '__main__':
                 else:
                     print("Bad Frame")
                     break
-        # Read a Frame
-        ret, frame = vid.read()
-        # Display Video on Pi
-        cv2.imshow('Video', frame)
-        if cv2.waitKey(1) & 0xFF == ord('s'):
-            print("Exiting")
-            break
+        else:
+            # Read a Frame
+            ret, frame = vid.read()
+            # Display Video on Pi
+            if ret == True:
+                cv2.imshow('Video', frame)
+            if cv2.waitKey(1) & 0xFF == ord('s'):
+                print("Exiting")
+                break
 
     cv2.destroyAllWindows()
+    vid.release()
+    f.release()
     gp.cleanup()
     print("You did it!")
     sys.exit(0)
