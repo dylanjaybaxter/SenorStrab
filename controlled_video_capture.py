@@ -27,6 +27,7 @@ if __name__ == '__main__':
     f, vid = videoCaptureSetup(FILENAME)
 
     #Setup GPIO
+    gp.setmode(gp.BOARD)
     gp.setup(LED_PIN, gp.OUT)
     gp.setup(TRIGGER_PIN, gp.IN, pull_up_down=gp.gp.PUD_DOWN)
     gp.output(LED_PIN, gp.LOW)
@@ -35,6 +36,8 @@ if __name__ == '__main__':
     while(True):
         #Enter Video Capture Loop When Pin is Triggered
         if gp.input(TRIGGER_PIN):
+            while gp.input(TRIGGER_PIN):
+                pass
             print("Capturing Video")
             cv2.destroyAllWindows()
             gp.ouput(LED_PIN, gp.HIGH)
@@ -52,6 +55,8 @@ if __name__ == '__main__':
                     #Exit if key is pressed or if GPIO Triggered
                     if cv2.waitKey(1) & 0xFF==ord('s') \
                             or gp.input(TRIGGER_PIN):
+                        while gp.input(TRIGGER_PIN):
+                            pass
                         vid.release()
                         f.release()
                         gp.output(LED_PIN, gp.LOW)
