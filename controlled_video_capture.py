@@ -29,7 +29,7 @@ if __name__ == '__main__':
     #Setup GPIO
     gp.setmode(gp.BOARD)
     gp.setup(LED_PIN, gp.OUT)
-    gp.setup(TRIGGER_PIN, gp.IN, pull_up_down=gp.gp.PUD_DOWN)
+    gp.setup(TRIGGER_PIN, gp.IN, pull_up_down=gp.PUD_DOWN)
     gp.output(LED_PIN, gp.LOW)
 
     #Global Idle
