@@ -40,7 +40,7 @@ if __name__ == '__main__':
                 pass
             print("Capturing Video")
             cv2.destroyAllWindows()
-            gp.ouput(LED_PIN, gp.HIGH)
+            gp.output(LED_PIN, gp.HIGH)
             while(True):
                 #Read a Frame
                 ret, frame = vid.read()
