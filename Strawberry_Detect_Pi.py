@@ -8,12 +8,11 @@ FILENAME2 = "test_video_labeled.avi"
 TRIGGER_PIN = 40
 LED_PIN = 38
 
-
 def videoCaptureSetup(filename):
     video = cv2.VideoCapture(0)
     if not video.isOpened():
         print("Capture Failed")
-        return None
+        video = None
     w = int(video.get(3))
     h = int(video.get(4))
     size = (w,h)
