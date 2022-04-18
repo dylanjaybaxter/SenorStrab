@@ -8,7 +8,7 @@ FILENAME2 = "test_video_labeled.avi"
 TRIGGER_PIN = 40
 LED_PIN = 38
 
-def videoCaptureSetup(filename):
+def videoCaptureSetup2(filename1, filename2):
     video = cv2.VideoCapture(0)
     if not video.isOpened():
         print("Capture Failed")
@@ -16,11 +16,15 @@ def videoCaptureSetup(filename):
     w = int(video.get(3))
     h = int(video.get(4))
     size = (w,h)
-    result = cv2.VideoWriter(filename,
+    result = cv2.VideoWriter(filename1,
                              cv2.VideoWriter_fourcc(*'MJPG'),
                              10,
                              size)
-    return result, video
+    result2 = cv2.VideoWriter(filename2,
+                             cv2.VideoWriter_fourcc(*'MJPG'),
+                             10,
+                             size)
+    return result, result2, video
 
 
 # Function for Segmenting Strawberries
@@ -90,8 +94,7 @@ def rectDraw(im,markers):
 if __name__ == '__main__':
 
     # Setup Video Capture
-    f, vid = videoCaptureSetup(FILENAME)
-    f2, vid2 = videoCaptureSetup(FILENAME2)
+    f, f2, vid = videoCaptureSetup2(FILENAME, FILENAME2)
 
     # Setup GPIO
     gp.setmode(gp.BOARD)
