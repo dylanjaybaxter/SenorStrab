@@ -147,9 +147,15 @@ if __name__ == '__main__':
         else:
             # Read a Frame
             ret, frame = vid.read()
+            # Mask the Strawbs
+            mask=strawbMask(frame)
+            # Segment
+            markers = segment(mask)
+            # Draw some rectangles
+            frame_draw = rectDraw(frame, markers)
             # Display Video on Pi
             if ret == True:
-                cv2.imshow('Video', frame)
+                cv2.imshow('Video', frame_draw)
             if cv2.waitKey(1) & 0xFF == ord('s'):
                 print("Exiting")
                 break
