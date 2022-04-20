@@ -155,6 +155,7 @@ if __name__ == '__main__':
             frame_draw = rectDraw(frame, markers)
             # Display Video on Pi
             if ret == True:
+                print("Hello")
                 #cv2.imshow('Video', frame_draw)
             if cv2.waitKey(1) & 0xFF == ord('s'):
                 print("Exiting")
