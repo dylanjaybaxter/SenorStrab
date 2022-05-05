@@ -169,6 +169,16 @@ if __name__ == '__main__':
                 print("Exiting")
                 break
 
+    gp.output(LED_PIN, gp.HIGH)
+    time.sleep(0.5)
+    gp.output(LED_PIN, gp.LOW)
+    gp.output(LED_PIN, gp.HIGH)
+    time.sleep(0.5)
+    gp.output(LED_PIN, gp.LOW)
+    gp.output(LED_PIN, gp.HIGH)
+    time.sleep(0.5)
+    gp.output(LED_PIN, gp.LOW)
+
     cv2.destroyAllWindows()
     vid.release()
     f.release()
