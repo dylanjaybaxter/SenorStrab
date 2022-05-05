@@ -8,6 +8,8 @@ FILENAME2 = "test_video_labeled.avi"
 TRIGGER_PIN = 40
 LED_PIN = 38
 
+captured = False
+
 def videoCaptureSetup2(filename1, filename2):
     video = cv2.VideoCapture(0)
     if not video.isOpened():
@@ -144,6 +146,7 @@ if __name__ == '__main__':
                 else:
                     print("Bad Frame")
                     break
+            break
         else:
             # Read a Frame
             ret, frame = vid.read()
