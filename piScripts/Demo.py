@@ -137,7 +137,7 @@ if __name__ == '__main__':
                     frame_draw = rectDraw(frame, markers)
 
                     # Display Video on Pi
-                    # cv2.imshow('Captured Video', frame_draw)
+                    #cv2.imshow('Captured Video', frame_draw)
                     f2.write(frame_draw)
 
                     # Exit if key is pressed or if GPIO Triggered
@@ -147,7 +147,7 @@ if __name__ == '__main__':
                             pass
                         gp.output(LED_PIN, gp.LOW)
                         cv2.destroyAllWindows()
-                        print("Video Saved")
+
                         break
                 else:
                     print("Bad Frame")
@@ -185,6 +185,7 @@ if __name__ == '__main__':
     vid.release()
     f.release()
     f2.release()
+    print("Video Saved")
     gp.cleanup()
     print("You did it!")
     sys.exit(0)
