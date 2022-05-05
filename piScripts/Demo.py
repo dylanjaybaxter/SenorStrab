@@ -2,10 +2,11 @@ import RPi.GPIO as gp
 import sys
 import cv2
 import numpy as np
+import time
 
 FILENAME = "test_video.avi"
 FILENAME2 = "test_video_labeled.avi"
-TRIGGER_PIN = 40
+TRIGGER_PIN = 32
 LED_PIN = 38
 
 captured = False
@@ -104,6 +105,10 @@ if __name__ == '__main__':
     gp.setup(TRIGGER_PIN, gp.IN, pull_up_down=gp.PUD_DOWN)
     gp.output(LED_PIN, gp.LOW)
 
+    gp.output(LED_PIN, gp.HIGH)
+    time.sleep(2)
+    gp.output(LED_PIN, gp.LOW)
+
     # Global Idle
     while(True):
         # Enter Video Capture Loop When Pin is Triggered
@@ -149,17 +154,17 @@ if __name__ == '__main__':
             break
         else:
             # Read a Frame
-            ret, frame = vid.read()
+            #ret, frame = vid.read()
             # Mask the Strawbs
-            mask=strawbMask(frame)
+            #mask=strawbMask(frame)
             # Segment
-            markers = segment(mask)
+            #markers = segment(mask)
             # Draw some rectangles
-            frame_draw = rectDraw(frame, markers)
+            #frame_draw = rectDraw(frame, markers)
             # Display Video on Pi
-            if ret == True:
-                continue
-                #cv2.imshow('Video', frame_draw)
+            #if ret == True:
+                #continue
+                #cv2.imshow('Video', frame)
             if cv2.waitKey(1) & 0xFF == ord('s'):
                 print("Exiting")
                 break
