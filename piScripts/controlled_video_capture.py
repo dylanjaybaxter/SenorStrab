@@ -3,7 +3,7 @@ import sys
 import cv2
 
 FILENAME = "test_video.avi"
-TRIGGER_PIN = 40
+TRIGGER_PIN = 32
 LED_PIN = 38
 
 def videoCaptureSetup(filename):
