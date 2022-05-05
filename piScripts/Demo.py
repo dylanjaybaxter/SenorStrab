@@ -110,12 +110,13 @@ if __name__ == '__main__':
     gp.output(LED_PIN, gp.LOW)
 
     # Global Idle
-    while(True):
+    while(captured == False):
         # Enter Video Capture Loop When Pin is Triggered
         if gp.input(TRIGGER_PIN):
             while gp.input(TRIGGER_PIN):
                 pass
             print("Capturing Video")
+            captured = True
             cv2.destroyAllWindows()
             gp.output(LED_PIN, gp.HIGH)
             while(True):
@@ -151,7 +152,6 @@ if __name__ == '__main__':
                 else:
                     print("Bad Frame")
                     break
-            break
         else:
             # Read a Frame
             #ret, frame = vid.read()
