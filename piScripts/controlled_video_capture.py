@@ -1,6 +1,7 @@
 import RPi.GPIO as gp
 import sys
 import cv2
+import time
 
 FILENAME = "test_video.avi"
 TRIGGER_PIN = 32
@@ -30,6 +31,10 @@ if __name__ == '__main__':
     gp.setmode(gp.BOARD)
     gp.setup(LED_PIN, gp.OUT)
     gp.setup(TRIGGER_PIN, gp.IN, pull_up_down=gp.PUD_DOWN)
+    gp.output(LED_PIN, gp.LOW)
+
+    gp.output(LED_PIN, gp.HIGH)
+    time.sleep(2)
     gp.output(LED_PIN, gp.LOW)
 
     #Global Idle
