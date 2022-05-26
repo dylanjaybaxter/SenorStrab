@@ -8,8 +8,8 @@ import pycuda.autoinit
 import numpy as np
 import cv2
 
-import utils.engine as engine_utils # TRT Engine creation/save/load utils
-import utils.model as model_utils # UFF conversion uttils
+import engine as engine_utils # TRT Engine creation/save/load utils
+import model as model_utils # UFF conversion uttils
 
 TRT_LOGGER = trt.Logger(trt.Logger.WARNING)
 class TRTInference(object):
