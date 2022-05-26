@@ -4,7 +4,6 @@ import sys
 import tarfile
 
 import requests
-import tensorflow as tf
 import tensorrt as trt
 import graphsurgeon as gs
 import uff
@@ -61,7 +60,7 @@ def ssd_unsupported_nodes_to_plugin_nodes(ssd_graph):
 
     Input = gs.create_plugin_node(name="Input",
         op="Placeholder",
-        dtype=tf.float32,
+        #dtype=tf.float32,
         shape=[1, channels, height, width])
     PriorBox = gs.create_plugin_node(name="GridAnchor", op="GridAnchor_TRT",
         minSize=0.2,
@@ -89,20 +88,20 @@ def ssd_unsupported_nodes_to_plugin_nodes(ssd_graph):
     concat_priorbox = gs.create_node(
         "concat_priorbox",
         op="ConcatV2",
-        dtype=tf.float32,
+        #dtype=tf.float32,
         axis=2
     )
     concat_box_loc = gs.create_plugin_node(
         "concat_box_loc",
         op="FlattenConcat_TRT",
-        dtype=tf.float32,
+        #dtype=tf.float32,
         axis=1,
         ignoreBatch=0
     )
     concat_box_conf = gs.create_plugin_node(
         "concat_box_conf",
         op="FlattenConcat_TRT",
-        dtype=tf.float32,
+        #dtype=tf.float32,
         axis=1,
         ignoreBatch=0
     )
